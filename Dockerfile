@@ -19,9 +19,11 @@ COPY requirements.txt /tmp/requirements.txt
 RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
+    rm -rf /root/.cache/ && \
+    chmod +x /entrypoint.sh
 COPY . /code
 COPY entrypoint.sh /entrypoint.sh
+
 
 EXPOSE 8000
 ENTRYPOINT ["/entrypoint.sh"]
